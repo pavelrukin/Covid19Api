@@ -1,5 +1,6 @@
 package com.example.covid19.ui
 
+import android.app.DownloadManager
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,7 +14,7 @@ class CountryViewModel(
     private val countryRepository: CountryRepository
 ): ViewModel() {
     val countryList:MutableLiveData<Resource<CountryResponse>> = MutableLiveData()
-    var countryListPage = 1
+
     init {
         getCountryList()
     }
@@ -22,7 +23,6 @@ class CountryViewModel(
         countryList.postValue(Resource.Loading())
         val response = countryRepository.getCountryList()
         countryList.postValue(handleCountryListResponse(response))
-
     }
     private fun handleCountryListResponse(response:Response<CountryResponse>) :Resource<CountryResponse>{
         if(response.isSuccessful){
@@ -32,4 +32,5 @@ class CountryViewModel(
         }
         return Resource.Error(response.message())
     }
+
 }

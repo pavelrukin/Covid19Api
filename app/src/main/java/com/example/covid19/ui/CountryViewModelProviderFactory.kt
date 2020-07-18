@@ -6,7 +6,7 @@ import com.example.covid19.repository.CountryRepository
 
 class CountryViewModelProviderFactory (val countryRepository: CountryRepository):ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return CountryViewModel(countryRepository ) as T
+        return CountryViewModel(countryRepository )  as T
     }
 
 }

@@ -14,9 +14,8 @@ interface CovidApi {
 
 @GET("summary")
     suspend fun searchForCountry(
-        @Query("page")
-        pageNumber:Int =1
-
+    @Query("q")
+    searchQuery: String
     ): Response<CountryResponse>
 
 }
