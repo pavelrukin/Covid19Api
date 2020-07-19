@@ -5,4 +5,10 @@
     <string name="country">Country</string>
     <string name="favorite">Favorite</string>
     <string name="search">Search</string>
+    <string name="total_confirmed">Total Confirmed</string>
+    <string name="total_death">Total Death</string>
+    <string name="total_recovered">Total Recovered</string>
+    <string name="new_confirmed">New Confirmed</string>
+    <string name="new_deaths">New Deaths</string>
+    <string name="new_recovered">New Recovered</string>
 </resources>

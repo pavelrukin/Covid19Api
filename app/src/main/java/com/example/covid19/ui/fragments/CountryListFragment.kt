@@ -5,10 +5,10 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.covid19.R
 import com.example.covid19.ui.CountryAdapter
@@ -38,9 +38,12 @@ class CountryListFragment : Fragment(R.layout.fragment_country_list) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         setupRecyclerView()
+        fetchList()
+        onItemClik()
 
+    }
 
-//GET LIST
+    fun fetchList() {
         viewModel.countryList.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
                 is Resource.Success -> {
@@ -62,6 +65,25 @@ class CountryListFragment : Fragment(R.layout.fragment_country_list) {
                 }
             }
         })
+    }
+
+    fun onItemClik() {
+        countryAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+
+                putSerializable("Country", it)
+               /* putSerializable("NewConfirmed", it)
+                putSerializable("NewDeaths", it)
+                putSerializable("NewRecovered", it)
+                putSerializable("TotalConfirmed", it)
+                putSerializable("TotalDeaths", it)
+                putSerializable("TotalRecovered", it)*/
+            }
+            findNavController().navigate(
+                R.id.action_country_list_fragment_to_detailFragment,
+                bundle
+            )
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

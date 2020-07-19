@@ -32,18 +32,18 @@
                 android:id="@+id/country_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:gravity="center"
+                android:text="@string/country"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Ukraine" />
+                tools:text="@string/country" />
 
             <TextView
                 android:id="@+id/total_confirmed"
@@ -54,7 +54,7 @@
 
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Total Confirmed "
+                android:text="@string/total_confirmed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/country_name"
                 tools:text="Total Confirmed" />
@@ -69,7 +69,7 @@
 
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Total Death  "
+                android:text="@string/total_death"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/total_confirmed"
                 tools:text="Total Death" />
@@ -83,7 +83,7 @@
 
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Total Recovered "
+                android:text="@string/total_recovered"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/total_death"
                 tools:text="Total Recovered" />
@@ -97,7 +97,7 @@
 
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="New Confirmed"
+                android:text="@string/new_confirmed"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/total_confirmed"
                 app:layout_constraintTop_toBottomOf="@+id/country_name"
@@ -112,7 +112,7 @@
 
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="New Deaths"
+                android:text="@string/new_deaths"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/total_death"
                 app:layout_constraintTop_toBottomOf="@+id/new_confirmed"
@@ -127,7 +127,7 @@
 
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="New Recovered "
+                android:text="@string/new_recovered"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/total_recovered"
                 app:layout_constraintTop_toBottomOf="@+id/new_death"

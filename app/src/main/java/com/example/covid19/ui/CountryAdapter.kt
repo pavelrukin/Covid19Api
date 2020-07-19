@@ -1,6 +1,5 @@
 package com.example.covid19.ui
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import kotlinx.android.synthetic.main.country_list_item.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class CountryAdapter( ) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>(),Filterable {
+class CountryAdapter : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>(), Filterable {
     inner class CountryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     private lateinit var fullList: List<Country>
@@ -53,13 +52,13 @@ class CountryAdapter( ) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>
         val country = differ.currentList[position]
         holder.itemView.apply {
 
-            country_name.text = country.country
-            total_confirmed.text = country.totalConfirmed.toString()
-            total_death.text = country.totalDeaths.toString()
-            total_recovered.text = country.totalRecovered.toString()
-            new_confirmed.text = country.newConfirmed.toString()
-            new_death.text = country.newDeaths.toString()
-            new_recovered.text = country.newRecovered.toString()
+            country_name.text =   country.country
+            total_confirmed.text = context.getString(R.string.total_confirmed)+": " +country.totalConfirmed.toString()
+            total_death.text = context.getString(R.string.total_death)+": " +country.totalDeaths.toString()
+            total_recovered.text = context.getString(R.string.total_recovered)+": " +country.totalRecovered.toString()
+            new_confirmed.text =context.getString(R.string.new_confirmed)+": " + country.newConfirmed.toString()
+            new_death.text = context.getString(R.string.new_deaths)+": " +country.newDeaths.toString()
+            new_recovered.text = context.getString(R.string.new_recovered)+": " +country.newRecovered.toString()
             setOnClickListener {
                 onItemClickListener?.let { it(country) }
             }
@@ -74,10 +73,12 @@ class CountryAdapter( ) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>
     fun setOnItemClickListener(listener: (Country) -> Unit) {
         onItemClickListener = listener
     }
+
     fun submitList(notes: List<Country>) {
         differ.submitList(notes)
         fullList = ArrayList(notes)
     }
+
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {

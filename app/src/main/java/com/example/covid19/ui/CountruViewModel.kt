@@ -4,6 +4,7 @@ import android.app.DownloadManager
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.covid19.model.Country
 import com.example.covid19.model.CountryResponse
 import com.example.covid19.repository.CountryRepository
 import com.example.covid19.utils.Resource
@@ -32,5 +33,9 @@ class CountryViewModel(
         }
         return Resource.Error(response.message())
     }
-
+    fun saveCountry(country: Country) = viewModelScope.launch {
+        countryRepository.upsert(country)
+    }
+    fun getSavedCountry()= countryRepository.getSavedCountry()
+    fun deleteCountry(country:Country) = viewModelScope.launch { countryRepository.deleteCountry(country) }
 }
