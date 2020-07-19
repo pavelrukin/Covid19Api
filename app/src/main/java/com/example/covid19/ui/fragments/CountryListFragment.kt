@@ -72,12 +72,6 @@ class CountryListFragment : Fragment(R.layout.fragment_country_list) {
             val bundle = Bundle().apply {
 
                 putSerializable("Country", it)
-               /* putSerializable("NewConfirmed", it)
-                putSerializable("NewDeaths", it)
-                putSerializable("NewRecovered", it)
-                putSerializable("TotalConfirmed", it)
-                putSerializable("TotalDeaths", it)
-                putSerializable("TotalRecovered", it)*/
             }
             findNavController().navigate(
                 R.id.action_country_list_fragment_to_detailFragment,

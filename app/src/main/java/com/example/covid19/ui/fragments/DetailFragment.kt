@@ -8,6 +8,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.covid19.R
 import com.example.covid19.ui.CountryViewModel
 import com.example.covid19.ui.MainActivity
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment(R.layout.fragment_detail) {
@@ -19,12 +20,12 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
         viewModel = (activity as MainActivity).viewModel
 
-        initView()
+        initView(view)
 
     }
 
     @SuppressLint("SetTextI18n")
-    fun initView() {
+    fun initView(view:View) {
         val country = args.Country
         detail_country_name.text = country.country
         detail_new_confirmed.text =
@@ -40,5 +41,12 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         detail_total_recovered.text =
             context?.getString(R.string.total_recovered) + ": " + country.newRecovered.toString()
 detail_date.text = country.date
+
+        fab_add_to_favorite.setOnClickListener {
+            viewModel.saveCountry(country)
+            Snackbar.make(view,"Country saved successfully" ,Snackbar.LENGTH_SHORT).show()
+        }
+
     }
+
 }
